@@ -3,12 +3,13 @@ var 	thinky = require('thinky')(),
 		r = thinky.r,
 		validator = require('validator');
 
-module.exports = thinky.createModel("profiles",{
+module.exports = thinky.createModel("profiles", {
     id: type.string(),
     first_name: type.string(),
     last_name: type.string(),
     phone: type.string(),
     address: type.string(),
+    postcode: type.number(),
     location: type.point(),
     locations: type.point(),
     ip: type.string(),

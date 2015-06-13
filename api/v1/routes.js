@@ -15,6 +15,8 @@ api.get('/profile', user.is('logged in'), profileCtrl.find);
 // Get search query params
 api.get('/search', profileCtrl.search);
 
+// add different types of searches here
+
 // Auth Routes
 api.post('/signup', authCtrl.signup);
 api.post('/login', authCtrl.login);
