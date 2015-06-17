@@ -52,10 +52,7 @@ module.exports.signup = function *() {
   // Create user
   var user = yield H.userCreate(body.fields);
 
-  // Add permissions
-  var permissions = yield H.generatePermissions(user);
-
-  this.body = { token: jwt.sign({ id: user.id, email: user.email, name: user.first_name, permissions: permissions }, secret)  };
+  this.body = { token: jwt.sign({ id: user.id, email: user.email, name: user.first_name }, secret)  };
   this.status = 200;
 
 };

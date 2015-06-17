@@ -1,6 +1,7 @@
 // Controllers
 var authCtrl = require('./controllers/Auth.js');
 var profileCtrl = require('./controllers/Profile.js');
+var importCtrl = require('./controllers/Import.js');
 var user = require('../../config/permissions');
 var router = require('koa-router');
 
@@ -16,6 +17,9 @@ api.get('/profile', user.is('logged in'), profileCtrl.find);
 api.get('/search', profileCtrl.search);
 
 // add different types of searches here
+
+// import
+api.get('/import/nationbuilder', importCtrl.nationbuilder);
 
 // Auth Routes
 api.post('/signup', authCtrl.signup);

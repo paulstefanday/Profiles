@@ -69,9 +69,8 @@ module.exports.create = function *() {
 
   // Get users IP
 
-
   // Updates record
-  if(record) result = yield M.Profile.get(record.id).update(body.fields);
+  if(record.length > 0) result = yield M.Profile.get(record[0].id).update(body.fields);
 
   // Or creates a new one
   else {
