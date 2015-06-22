@@ -1,8 +1,8 @@
 {
-  "name": "AdvocayTracker",
+  "name": "Momentum-Profiles",
   "version": "0.0.0",
-  "description": "AdvocayTracker",
-  "main": "index.js",
+  "description": "Profile management for NFP's",
+  "main": "server.js",
   "scripts": {
     "test": "node --harmony `which gulp` test-once",
     "start": "node_modules/.bin/nodemon --harmony server.js",
@@ -10,7 +10,7 @@
     "up": "node --harmony up.js",
     "down": "node --harmony down.js"
   },
-  "author": "Agency",
+  "author": "Paul Day",
   "license": "MIT",
   "dependencies": {
     "bluebird": "^2.9.26",
