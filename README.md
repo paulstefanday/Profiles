@@ -1,5 +1,5 @@
 <h1>Profiles</h1>
-https://circleci.com/gh/paulstefanday/Profiles/tree/master.svg?style=svg
+<img src="https://circleci.com/gh/paulstefanday/Profiles/tree/master.svg?style=svg" />
 
 
 <h3>What will profiles do?</h3>
