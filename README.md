@@ -1,4 +1,5 @@
 <h1>Profiles</h1>
+<img src="https://circleci.com/gh/paulstefanday/Profiles.png?style=shield&circle-token=59271ceea8cfb53b01602490d572451d9ba56028"/>
 
 <h3>What will profiles do?</h3>
 <p>Receives profile information and creates a new user or adds information to an existing one, then returns a unique ID to be attached to other services database records.</p>
