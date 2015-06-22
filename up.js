@@ -9,12 +9,7 @@ var app = require('./server'),
 	r = thinky.r,
 	fake = require('./mock.js'),
 	jwt = require('jsonwebtoken'),
-	amount = process.env.AMOUNT ? process.env.AMOUNT : 40;
-
-
-function rand(limit) {
-	return Math.abs(Math.floor(Math.random() * limit));
-}
+	amount = process.env.a ? process.env.a : 40;
 
 co(function *(){
 
@@ -23,13 +18,21 @@ co(function *(){
 	fake.data.admin.token = admin.body.token;
 	fake.data.admin.id = jwt.verify(admin.body.token, config.secret).id;
 
+	// create users
+	for (var i = 1; i < amount; i++) {
+		var user = fake.user();
+		var res = yield request.post(fake.data.v + '/signup').send(user).end();
+		user.token = res.body.token;
+		fake.users.push(user);
+	}
+
 	// create profiles
 	for (var i = 1; i < amount; i++) {
 		var profile = yield request.post(fake.data.v + '/profile').send(fake.profile()).end();
 		fake.profiles.push(profile.body);
 	}
 
-	console.log('Token: ' + fake.data.admin.token);
+	console.log('Token: ' + fake.data.admin.token, 'Profiles: ' + fake.profiles.length);
 	process.exit()
 
 }).catch(function(err){
@@ -37,3 +40,7 @@ co(function *(){
 	process.exit()
 });
 
+
+function rand(limit) {
+	return Math.abs(Math.floor(Math.random() * limit));
+}

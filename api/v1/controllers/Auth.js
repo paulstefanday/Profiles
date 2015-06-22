@@ -95,10 +95,7 @@ module.exports.login = function *() {
   var compare = yield bcrypt.compare(body.fields.password, user[0].password);
   if (!compare) this.throw(401, "Incorrect details.");
 
-  // Add permissions
-  var permissions = yield H.generatePermissions(user[0]);
-
-  this.body = { token: jwt.sign({id: user[0].id, email: user[0].email, name: user[0].first_name, permissions: permissions }, secret)  };
+  this.body = { token: jwt.sign({id: user[0].id, email: user[0].email, name: user[0].first_name }, secret)  };
   this.status = 200;
 
 };
