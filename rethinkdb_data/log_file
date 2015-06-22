@@ -1,8 +1,0 @@
-2015-06-22T14:36:24.134486000 10.199212s notice: Recursively removing directory /Users/paulday/Sites/Profiles/rethinkdb_data/tmp
-2015-06-22T14:36:24.135660000 10.200389s notice: Initializing directory /Users/paulday/Sites/Profiles/rethinkdb_data
-2015-06-22T14:36:24.135743000 10.200469s info: Creating a default database for your convenience. (This is because you ran 'rethinkdb' without 'create', 'serve', or '--join', and the directory '/Users/paulday/Sites/Profiles/rethinkdb_data' did not already exist or is empty.)
-2015-06-22T14:36:24.135779000 10.200505s notice: Running rethinkdb 2.0.2 (CLANG 6.1.0 (clang-602.0.53))...
-2015-06-22T14:36:24.139009000 10.203736s notice: Running on Darwin 14.1.1 x86_64
-2015-06-22T14:36:24.139053000 10.203778s notice: Loading data from directory /Users/paulday/Sites/Profiles/rethinkdb_data
-2015-06-22T14:36:24.482474000 10.547199s info: Automatically using cache size of 2898 MB
-2015-06-22T14:36:24.482783000 10.547508s error: TCP socket creation failed for port 29015: Address already in use.
