@@ -7,7 +7,7 @@ var co = require('co'),
 	r = thinky.r,
 	fake = require('../../mock.js'),
 	jwt = require('jsonwebtoken'),
-	amount = process.env.a ? process.env.a : 40;
+	amount = process.env.a ? process.env.a : 5;
 
 module.exports = function *(request) {
 
