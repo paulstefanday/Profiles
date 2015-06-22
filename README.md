@@ -1,5 +1,6 @@
 <h1>Profiles</h1>
-[![Circle CI](https://circleci.com/gh/paulstefanday/Profiles.svg?style=svg)](https://circleci.com/gh/paulstefanday/Profiles)
+https://circleci.com/gh/paulstefanday/Profiles/tree/master.svg?style=svg
+
 
 <h3>What will profiles do?</h3>
 <p>Receives profile information and creates a new user or adds information to an existing one, then returns a unique ID to be attached to other services database records.</p>

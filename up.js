@@ -13,24 +13,39 @@ var app = require('./server'),
 
 co(function *(){
 
+	// cleaned database
+	var tables = yield r.db('test').tableList().forEach(function(name){
+		return r.table(name).delete()
+	})
+
+	console.log('All tables cleared')
+
 	// create admin account
 	var admin = yield request.post(fake.data.v + '/signup/').send(fake.data.admin).end();
 	fake.data.admin.token = admin.body.token;
 	fake.data.admin.id = jwt.verify(admin.body.token, config.secret).id;
 
+	console.log('Created admin')
+
 	// create users
 	for (var i = 1; i < amount; i++) {
-		var user = fake.user();
-		var res = yield request.post(fake.data.v + '/signup').send(user).end();
+		var user = fake.user(),
+			res = yield request.post(fake.data.v + '/signup').send(user).end();
+		
 		user.token = res.body.token;
 		fake.users.push(user);
 	}
+
+	console.log('Created ' + fake.users.length + ' users.')
 
 	// create profiles
 	for (var i = 1; i < amount; i++) {
 		var profile = yield request.post(fake.data.v + '/profile').send(fake.profile()).end();
 		fake.profiles.push(profile.body);
 	}
+
+	console.log('Created ' + fake.profiles.length + ' profiles.')
+
 
 	console.log('Token: ' + fake.data.admin.token, 'Profiles: ' + fake.profiles.length);
 	process.exit()
