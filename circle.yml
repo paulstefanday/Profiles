@@ -4,7 +4,7 @@ machine:
 
 test:
   override:
-    - rethinkdb && npm test
+    - rethinkdb & npm test
 
 dependencies:
   pre:
