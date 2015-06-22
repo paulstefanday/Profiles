@@ -6,7 +6,7 @@ gulp.task('test-once', function(){
   gulp.src(['tests/*.js'])
     .pipe(mocha({
       reporter: 'spec',
-      timeout: 10000
+      timeout: 100000
     }))
     .pipe(exit());
 });
