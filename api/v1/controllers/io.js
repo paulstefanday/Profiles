@@ -1,6 +1,8 @@
 'use strict';
 var config = require('../../../config/config'),
-	M = require('../../../models/');
+  	M = require('../../../models/'),
+    thinky = require(__base+'/config/thinky.js'),
+    r = thinky.r;
 
 
 module.exports.activity = function (io) {
@@ -9,10 +11,12 @@ module.exports.activity = function (io) {
 
     socket.on('activity:changes:start', function(data){
 
+      console.log('get started', data)
+
       let limit, filter;
       limit = data.limit || 100; 
       filter = data.filter || {};
-      r.table('activity')
+      r.db('test').table('activities')
         .orderBy({index: r.desc('createdAt')})
         .filter(filter)
         .limit(limit)
@@ -34,6 +38,7 @@ module.exports.activity = function (io) {
                 console.log(err);
               }
               else{
+                console.log(record)
                 socket.emit('activity:changes', record);
               }
             });
@@ -59,50 +64,50 @@ module.exports.activity = function (io) {
 
 
 
-    // socket.on('activity:findById', function(id, cb){
-    //   r.table('question')
-    //     .get(id)
-    //     .run(cb);
-    // });
+    socket.on('activity:findById', function(id, cb){
+      r.table('activities')
+        .get(id)
+        .run(cb);
+    });
 
-    // socket.on('activity:add', function(record, cb){
+    socket.on('activity:add', function(record, cb){
       
-    //   record = _.pick(record, 'name', 'question');
-    //   record.createdAt = new Date();
+      record = _.pick(record, 'name', 'activities');
+      record.createdAt = new Date();
       
-    //   r.table('question')
-    //     .insert(record)
-    //     .run(function(err, result){
+      r.table('activities')
+        .insert(record)
+        .run(function(err, result){
 
-    //       if(err){
-    //         cb(err);
-    //       }
-    //       else{
-    //         record.id = result.generated_keys[0];
-    //         cb(null, record);
-    //       }
+          if(err){
+            cb(err);
+          }
+          else{
+            record.id = result.generated_keys[0];
+            cb(null, record);
+          }
 
-    //     });
+        });
 
-    // });
-    // socket.on('activity:update', function(record, cb){
+    });
+    socket.on('activity:update', function(record, cb){
 
-    //   record = _.pick(record, 'id', 'name', 'question');
-    //   r.table('question')
-    //     .get(record.id)
-    //     .update(record)
-    //     .run(cb);
+      record = _.pick(record, 'id', 'name', 'activities');
+      r.table('activities')
+        .get(record.id)
+        .update(record)
+        .run(cb);
       
-    // });
+    });
 
-    // socket.on('activity:delete', function(id, cb){
+    socket.on('activity:delete', function(id, cb){
 
-    //   r.table('question')
-    //     .get(id)
-    //     .delete()
-    //     .run(cb);
+      r.table('activities')
+        .get(id)
+        .delete()
+        .run(cb);
 
-    // });
+    });
     
   });
 

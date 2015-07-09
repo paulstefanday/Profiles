@@ -1,7 +1,7 @@
 module.exports = {
 	// basic
 	"env":  process.env.NODE_ENV || 'development',
-	"port": process.env.PORT || 4000,
+	"port": process.env.PORT || 3000,
 
 	// Database
 	"db": {
@@ -17,8 +17,8 @@ module.exports = {
 	"mandrill": { user: process.env.M_USER || "paul@agency.sc", pass: process.env.M_PASS || "rRlpl_m_BCd4AzirxzVl0Q" },
 
 	// From email in all emails and also replaces the 'to:' email field in development env
-	"email": process.env.EMAIL || 'paul@agency.sc',
+	"email": process.env.EMAIL || 'paul@paulday.com.au',
 
 	// Root admin
-	"admin": process.env.ADMIN || 'paul@agency.sc'
+	"admin": process.env.ADMIN || 'paul@paulday.com.au'
 };

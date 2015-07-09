@@ -47,4 +47,4 @@ module.exports.auth = function* (next) {
 
 module.exports.permissions = require('./permissions').middleware();
 
-module.exports.cors = require('kcors')();
+module.exports.cors = require('kcors')({ 'Access-Control-Allow-Credentials': true });

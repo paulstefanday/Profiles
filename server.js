@@ -12,7 +12,7 @@ var app = module.exports = require('koa')(),
 var server, io;
 
 // Middleware
-app.use(middleware.logs);
+// app.use(middleware.logs);
 app.use(middleware.cors);
 app.use(middleware.errors);
 app.use(middleware.permissions);
@@ -30,7 +30,7 @@ io = socketIo(server);
 require('./api/v1/controllers/io').activity(io);
 
 // Listern to port
-app.listen(config.port);
+server.listen(config.port);
 
 
 

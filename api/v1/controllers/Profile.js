@@ -60,8 +60,10 @@ module.exports.search = function *() {
 module.exports.create = function *() {
   var body = yield formidable.parse(this), record, result, activity;
 
+  console.log(body)
+
   // Thorws an error if email and phone are both missing
-  if( !body.fields.phone && !body.fields.phone ) this.throw(403, 'Requires email or phone number')
+  if( !body.fields.phone && !body.fields.email ) this.throw(403, 'Requires email or phone number')
 
   // Finds by email
   if(body.fields.email) record = yield M.Profile.filter({email: body.fields.email});
