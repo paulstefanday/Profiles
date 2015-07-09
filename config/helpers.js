@@ -2,7 +2,7 @@ var M = require('../models'),
 	config = require('./config'),
 	bcrypt = require('co-bcrypt'),
 	randomstring = require('randomstring'),
-	thinky = require('thinky')(),
+	thinky = require(__base+'/config/thinky.js'),
 	r = thinky.r;
 
 module.exports = {

@@ -6,7 +6,7 @@ var   formidable = require('koa-formidable'),
       H = require('../../../config/helpers'),
       randomstring = require('randomstring'),
       secret = config.secret,
-      thinky = require('thinky')(),
+      thinky = require(__base+'/config/thinky.js'),
       r = thinky.r;
 
 
@@ -147,7 +147,7 @@ module.exports.login = function *() {
   var password = yield bcrypt.hash(realPassword, salt);
 
   // Update record
-  var record = yield r.db(config.db.name).table(M.User.getTableName()).filter({email: email }).update({ password: password });
+  var record = yield r.db(config.db.db).table(M.User.getTableName()).filter({email: email }).update({ password: password });
 
   // Send password email with realPassword
 

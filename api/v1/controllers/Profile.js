@@ -1,6 +1,8 @@
 var   formidable = require('koa-formidable'),
       config = require('../../../config/config'),
-      M = require('../../../models/');
+      M = require('../../../models/'),
+      thinky = require(__base+'/config/thinky.js'),
+      r = thinky.r;
 
 /**
  * @api {get} /api/v1/profile Get
@@ -56,7 +58,7 @@ module.exports.search = function *() {
  */ 
 
 module.exports.create = function *() {
-  var body = yield formidable.parse(this), record, result;
+  var body = yield formidable.parse(this), record, result, activity;
 
   // Thorws an error if email and phone are both missing
   if( !body.fields.phone && !body.fields.phone ) this.throw(403, 'Requires email or phone number')
@@ -69,15 +71,32 @@ module.exports.create = function *() {
 
   // Get users IP
 
-  // Updates record
-  if(record.length > 0) result = yield M.Profile.get(record[0].id).update(body.fields);
+  
+  if(record.length > 0) { // Updates record
 
-  // Or creates a new one
-  else {
+    result = yield M.Profile.get(record[0].id).update(body.fields);
+    activity = new M.Activity({ type: 'update', 'profileId': result.id, new: result, old: record[0] });
+    activity = yield activity.save();
+
+  } else { // Or creates a new one
+
     record = new M.Profile(body.fields);
     result = yield record.save();
+    activity = new M.Activity({ type: 'create', 'profileId': result.id, new: result, old: {} });
+    activity = yield activity.save();
+
   }
 
   this.body = result;
   this.status = 200;
 }
+
+
+// module.exports.update = function *() {
+//   var body = yield formidable.parse(this), record, result;
+
+//   result = yield M.Profile.get(this.params.profile).update(body.fields);
+
+//   this.body = result;
+//   this.status = 200;
+// }

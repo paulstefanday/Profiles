@@ -12,3 +12,9 @@ dependencies:
     - wget -qO- http://download.rethinkdb.com/apt/pubkey.gpg | sudo apt-key add -
     - sudo apt-get update
     - sudo apt-get install rethinkdb=2.\*
+
+deployment:
+  dockerhub:
+    branch: master
+    commands:
+      - $TRIGGER_DOCKER_HUB_BUILD

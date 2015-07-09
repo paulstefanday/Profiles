@@ -5,7 +5,9 @@ module.exports = {
 
 	// Database
 	"db": {
-		"name": process.env.DB || 'test'
+		"db": process.env.DB || 'test',
+		"port": process.env.DBPORT || 28015,
+		"host": process.env.DBHOST || 'localhost',
 	},
 	
 	// JWT

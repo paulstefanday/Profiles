@@ -9,14 +9,11 @@ var api = new router();
 
 // Save profile
 api.post('/profile', profileCtrl.create);
-
-// Query profiles
-api.get('/profile', user.is('logged in'), profileCtrl.find);
+// api.put('/profile/:profile', profileCtrl.update);
+// api.get('/profile', user.is('logged in'), profileCtrl.find);
 
 // Get search query params
-api.get('/search', profileCtrl.search);
-
-// add different types of searches here
+// api.get('/search', profileCtrl.search);
 
 // import
 api.get('/import/nationbuilder', importCtrl.nationbuilder);

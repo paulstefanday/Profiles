@@ -1,6 +1,15 @@
 var jwt = require('jsonwebtoken'),
     config = require('./config'),
+    // jade = require('koa-jade'),
     secret = config.secret;
+
+
+module.exports.logs = function* (next) {
+  console.info('-->', this.method, this.url, 'ip', this.ip, 'ips', this.ips)
+  var start = Date.now()
+  yield next
+  console.info('<--', this.method, this.url, this.res.statusCode, (Date.now() - start) + 'ms')
+}
 
 module.exports.errors = function *(next){
   try {
@@ -28,6 +37,13 @@ module.exports.auth = function* (next) {
   yield next;
 
 }
+
+// module.exports.render = function* (next) {
+//   return jade.middleware({
+//     viewPath: __base + '/frontend',
+//     debug: true
+//   })
+// }
 
 module.exports.permissions = require('./permissions').middleware();
 

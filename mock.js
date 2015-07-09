@@ -1,10 +1,12 @@
 var config = require('./config/config'),
 	Chance = require('chance'),
-    chance = new Chance();
+    chance = new Chance(),
+    _ = require('lodash');
 
 var data = {};
 	data.v = '/api/v1';
 	data.admin = { email: config.admin, password: '1234', first_name: 'rootadmin' };
+	data.emails = [chance.email(),chance.email(),chance.email(),chance.email(),chance.email(),chance.email(),chance.email(),chance.email(),chance.email(),chance.email(), chance.email(), chance.email(), chance.email(), chance.email(), chance.email(), chance.email(),chance.email(),chance.email(),chance.email(),chance.email(),chance.email(),chance.email(),chance.email(),chance.email(),chance.email(),chance.email()];
 
 module.exports = {
 	profiles: [],
@@ -40,7 +42,7 @@ module.exports.profile = function() {
 	    dob: chance.birthday(),
 	    job_title: chance.pick(['Overlord', 'Head of cat cuddling', 'Senior Cat cuddler', 'Thai food tester', 'Fart donator', 'Senior VP of farts', 'Head of naps']),
 	    gender: chance.gender(),
-	    email: chance.email(),
+	    email: chance.pick(data.emails),
 	}
 
 }

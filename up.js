@@ -5,7 +5,7 @@ var app = require('./server'),
 	M = require('./models'),
 	_ = require('lodash'),
 	config = require('./config/config'),
-	thinky = require('thinky')(),
+	thinky = require(__base+'/config/thinky.js'),
 	r = thinky.r,
 	fake = require('./mock.js'),
 	jwt = require('jsonwebtoken'),
@@ -28,15 +28,15 @@ co(function *(){
 	console.log('Created admin')
 
 	// create users
-	for (var i = 1; i < amount; i++) {
-		var user = fake.user(),
-			res = yield request.post(fake.data.v + '/signup').send(user).end();
+	// for (var i = 1; i < amount; i++) {
+	// 	var user = fake.user(),
+	// 		res = yield request.post(fake.data.v + '/signup').send(user).end();
 		
-		user.token = res.body.token;
-		fake.users.push(user);
-	}
+	// 	user.token = res.body.token;
+	// 	fake.users.push(user);
+	// }
 
-	console.log('Created ' + fake.users.length + ' users.')
+	// console.log('Created ' + fake.users.length + ' users.')
 
 	// create profiles
 	for (var i = 1; i < amount; i++) {
