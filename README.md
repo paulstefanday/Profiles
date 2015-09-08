@@ -26,7 +26,9 @@ Allows you to do advanced demographic querying outputting unique id's which can 
 4. Mandrill
 
 ### TODO:
+- get client loading within same repo
 - get save user details route working under a few circumstances
 - get another node app saving data serverside
 - get a frontend that lets you monitor activity
 - manage services via api keys
+- add in tests and docs
