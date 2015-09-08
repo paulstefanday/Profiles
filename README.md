@@ -1,34 +1,32 @@
-<h1>Profiles</h1>
+# Profiles
 <img src="https://circleci.com/gh/paulstefanday/Profiles/tree/master.svg?style=svg" />
 
 
-<h3>What will profiles do?</h3>
-<p>Receives profile information and creates a new user or adds information to an existing one, then returns a unique ID to be attached to other services database records.</p>
+### What will profiles do?
+Receives profile information and creates a new user or adds information to an existing one, then returns a unique ID to be attached to other services database records.
 
-<p>Allows you to do advanced demographic querying outputting unique id's which can then be used to search other services that have those id's assosiated.</p>
+Allows you to do advanced demographic querying outputting unique id's which can then be used to search other services that have those id's assosiated.
 
-<h3>Setup:</h3>
-<ol>
-	<li>Rethinkdb with homebrew: brew update && brew install rethinkdb</li>
-	<li>Nodejs: <a href="https://nodejs.org/download/">https://nodejs.org/download/</a></li>
-</ol>
+### Setup
+1. Rethinkdb with homebrew: brew update && brew install rethinkdb</li>
+2. Nodejs: <a href="https://nodejs.org/download/">https://nodejs.org/download/</a>
 
-<h3>Run:</h3>
-<ul>
-	<li>1. sudo npm install</li>
-	<li>2. rethinkdb</li>
-	<li>npm start</li>
-	<li>npm test</li>
-	<li>npm run docs</li>
-	<li>RethinkDB admin panel: <a href="http://localhost:8080/">http://localhost:8080/</a> </a>
-</ul>
+### Run
+1. sudo npm install
+2. rethinkdb
+3. npm start
+4. npm test
+5. npm run docs
+6. RethinkDB admin panel: <a href="http://localhost:8080/">http://localhost:8080/</a> 
 
-<h3>Tech:</h3>
-<ul>
-	<li>Koa</li>
-	<li>Rethinkdb</li>
-	<li><a href="https://github.com/apidoc/apidoc">apiDoc</a></li>
-	<li>Mandrill</li>
-</ul>
+### Tech
+1. Koa
+2. Rethinkdb
+3. <a href="https://github.com/apidoc/apidoc">apiDoc</a>
+4. Mandrill
 
-<h3>Docs:</h3>
+### TODO:
+- get save user details route working under a few circumstances
+- get another node app saving data serverside
+- get a frontend that lets you monitor activity
+- manage services via api keys
