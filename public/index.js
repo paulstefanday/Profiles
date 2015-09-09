@@ -305,7 +305,7 @@ var buf = [];
 var jade_mixins = {};
 var jade_interp;
 
-buf.push("<div id=\"navigation\" ng-class=\"{ active : vm.showNav }\"><button ng-click=\"vm.showNav = !vm.showNav\" class=\"menu-link\"><i ng-hide=\"vm.showNav\" class=\"ion-navicon\"></i><i ng-show=\"vm.showNav\" class=\"ion-ios-close-empty\"></i></button><ul id=\"menu\"><li><a href=\"#/\" ng-click=\"vm.hide()\">Home</a></li><li><a href=\"#/map\" ng-click=\"vm.hide()\">Map</a></li><li><a href=\"#/report\" ng-click=\"vm.hide()\" ng-show=\"vm.loggedIn()\">Report</a></li><li><a href=\"\" ng-hide=\"vm.loggedIn()\" ng-click=\"vm.login()\">Login</a></li><li><a href=\"\" ng-show=\"vm.loggedIn()\" ng-click=\"vm.logout()\">Logout</a></li></ul></div>");;return buf.join("");
+buf.push("<div id=\"navigation\" ng-class=\"{ active : vm.showNav }\"><button ng-click=\"vm.showNav = !vm.showNav\" class=\"menu-link\"><i ng-hide=\"vm.showNav\" class=\"ion-navicon\"></i><i ng-show=\"vm.showNav\" class=\"ion-ios-close-empty\"></i></button><ul id=\"menu\"><li><a href=\"#/\" ng-click=\"vm.hide()\">Home</a></li><li><a href=\"\" ng-hide=\"vm.loggedIn()\" ng-click=\"vm.login()\">Login</a></li><li><a href=\"\" ng-show=\"vm.loggedIn()\" ng-click=\"vm.logout()\">Logout</a></li></ul></div>");;return buf.join("");
 };
 },{"jade/runtime":17}],5:[function(require,module,exports){
 'use strict';
@@ -400,7 +400,7 @@ var buf = [];
 var jade_mixins = {};
 var jade_interp;
 
-buf.push("<div id=\"home\" class=\"box\"><div class=\"logo\"><i class=\"ion-ios-people\"></i><h1>Profiles</h1></div><br/><button ng-if=\"!vm.isUser()\" ng-click=\"vm.authenticate('facebook')\" ladda-button=\"vm.laddaLoading\" data-style=\"expand-right\" class=\"ladda-button\">Login via Facebook</button><button ng-if=\"vm.isUser()\" ui-sref=\"report\" class=\"ladda-button\">Report</button></div>");;return buf.join("");
+buf.push("<div id=\"home\" class=\"box\"><div class=\"logo\"><i class=\"ion-ios-people\"></i><h1>Profiles</h1><p>Manage profiles accross all your applications</p></div><br/><button ng-if=\"!vm.isUser()\" ng-click=\"vm.authenticate('facebook')\" ladda-button=\"vm.laddaLoading\" data-style=\"expand-right\" class=\"ladda-button\">Get started via Facebook</button><button ng-if=\"vm.isUser()\" ui-sref=\"report\" class=\"ladda-button\">Report</button></div>");;return buf.join("");
 };
 },{"jade/runtime":17}],9:[function(require,module,exports){
 "use strict";
