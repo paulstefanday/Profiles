@@ -1,10 +1,10 @@
 global.__base = __dirname + '/';
 
 var app = module.exports = require('koa')(),
-    config = require(__base+'/api/config/config'),
-    middleware = require(__base+'/api/config/middleware'),
+    config = require(__base+'/config/config'),
+    middleware = require(__base+'/config/middleware'),
     mount = require('koa-mount'),
-    M = require(__base+'/api/models'),
+    M = require(__base+'/models'),
    	route = require('koa-route'),
    	render = require('co-render'),
    	session = require('koa-session'),
@@ -27,12 +27,12 @@ app.use(middleware.auth);
 app.use(route.get('/*', function *() { this.body = yield render('./client/index.jade'); }));
 
 // HTTP routes
-app.use(mount('/api/v1', require('./api/v1/routes')));
+app.use(mount('/api/v1', require('./v1/routes')));
 
 // Sockets
 var server = require('http').createServer(app.callback());
 var io = require('socket.io')(server);
-require('./api/v1/controllers/io').activity(io);
+require('./v1/controllers/io').activity(io);
 
 // Listen
 server.listen(config.port);

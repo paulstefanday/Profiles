@@ -1,4 +1,4 @@
-var email = require(__base+'/api/email');
+var email = require(__base+'/email');
 
 module.exports = {
 

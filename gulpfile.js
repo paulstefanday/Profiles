@@ -34,9 +34,9 @@ gulp.task('build', function() {
     .pipe(gulp.dest(dist))
 });
 
-gulp.task('server', function (cb) {
-	exec('node_modules/.bin/nodemon --harmony --watch server.js', function execError(err, stdout, stderr) { console.log(stdout); console.log(stderr); cb(err); });
-});
+// gulp.task('server', function (cb) {
+// 	exec('node_modules/.bin/nodemon --harmony --watch server.js', function execError(err, stdout, stderr) { console.log(stdout); console.log(stderr); cb(err); });
+// });
 
 gulp.task('default', ['build', 'less', 'watch']);
 

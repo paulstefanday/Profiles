@@ -1,13 +1,13 @@
 var   formidable = require('koa-formidable'),
       jwt = require('jsonwebtoken'),
       bcrypt = require('co-bcryptjs'),
-      config = require(__base+'/api/config/config'),
-      M = require(__base+'/api/models'),
-      H = require(__base+'/api/config/helpers'),
+      config = require(__base+'/config/config'),
+      M = require(__base+'/models'),
+      H = require(__base+'/config/helpers'),
       Purest = require('purest'),
       randomstring = require('randomstring'),
       secret = config.secret,
-      thinky = require(__base+'/api/config/thinky.js'),
+      thinky = require(__base+'/config/thinky.js'),
       request = require('koa-request'),
       r = thinky.r;
 
@@ -38,7 +38,7 @@ module.exports.facebook = function *(next) {
 }
 
 /**
- * @api {post} /api/v1/signup/ Signup
+ * @api {post} /v1/signup/ Signup
  * @apiName Signup
  * @apiGroup Auth
  * @apiVersion 1.0.0
@@ -85,7 +85,7 @@ module.exports.signup = function *() {
 };
 
 /**
- * @api {post} /api/v1/login/ Login
+ * @api {post} /v1/login/ Login
  * @apiName Login
  * @apiGroup Auth
  * @apiVersion 1.0.0
@@ -129,7 +129,7 @@ module.exports.login = function *() {
 
 
 /**
- * @api {post} /api/v1/reset/ Reset
+ * @api {post} /v1/reset/ Reset
  * @apiName Reset
  * @apiGroup Auth
  * @apiVersion 1.0.0

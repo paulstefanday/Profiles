@@ -5,7 +5,7 @@ var   formidable = require('koa-formidable'),
       r = thinky.r;
 
 /**
- * @api {get} /api/v1/profile Get
+ * @api {get} /v1/profile Get
  * @apiName Get
  * @apiGroup Profiles
  * @apiVersion 1.0.0
@@ -26,7 +26,7 @@ module.exports.find = function *() {
 }
 
 /**
- * @api {get} /api/v1/search Get
+ * @api {get} /v1/search Get
  * @apiName Get
  * @apiGroup Profiles
  * @apiVersion 1.0.0
@@ -44,7 +44,7 @@ module.exports.search = function *() {
 }
 
 /**
- * @api {get} /api/v1/profile Create
+ * @api {get} /v1/profile Create
  * @apiName Create
  * @apiGroup Profiles
  * @apiVersion 1.0.0

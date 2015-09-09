@@ -1,11 +1,11 @@
-var   config = require(__base+'/api/config/config'),
-	  M = require(__base+'/api/models/'),
-	  thinky = require(__base+'/api/config/thinky.js'),
+var   config = require(__base+'/config/config'),
+	  M = require(__base+'/models/'),
+	  thinky = require(__base+'/config/thinky.js'),
 	  r = thinky.r;
 
 
 /**
- * @api {get} /api/v1/activity Create
+ * @api {get} /v1/activity Create
  * @apiName Create
  * @apiGroup Activity
  * @apiVersion 1.0.0

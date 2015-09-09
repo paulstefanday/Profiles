@@ -3,7 +3,7 @@ var   formidable = require('koa-formidable'),
       M = require('../../../models/');
 
 /**
- * @api {get} /api/v1/import/nationbuilder Nationbuilder
+ * @api {get} /v1/import/nationbuilder Nationbuilder
  * @apiName Nationbuilder
  * @apiGroup Import
  * @apiVersion 1.0.0

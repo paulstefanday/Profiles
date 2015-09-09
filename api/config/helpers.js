@@ -1,8 +1,8 @@
-var M = require(__base+'/api/models'),
-	config = require(__base+'/api/config/config'),
+var M = require(__base+'/models'),
+	config = require(__base+'/config/config'),
 	bcrypt = require('co-bcryptjs'),
 	randomstring = require('randomstring'),
-	thinky = require(__base+'/api/config/thinky.js'),
+	thinky = require(__base+'/config/thinky.js'),
 	r = thinky.r;
 
 module.exports = {

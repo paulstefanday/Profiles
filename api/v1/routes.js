@@ -1,7 +1,7 @@
 // Controllers
 var authCtrl = require('./controllers/Auth.js');
 var activityCtrl = require('./controllers/Activity.js');
-var user = require(__base+'/api/config/permissions');
+var user = require(__base+'/config/permissions');
 var router = require('koa-router');
 
 var api = new router();
