@@ -28,7 +28,9 @@ Allows you to do advanced demographic querying outputting unique id's which can 
 ### TODO:
 - get client loading within same repo
 - get save user details route working under a few circumstances
-- get another node app saving data serverside
-- get a frontend that lets you monitor activity
+- copy basic open source starter and make sure all the proper checks are setup
+- get another node app saving data serverside via npm package
 - manage services via api keys
+- get a frontend that lets you monitor activity
 - add in tests and docs
+- get a cluster of rethinkdb going using docker in AWS

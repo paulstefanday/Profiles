@@ -1,7 +1,7 @@
 var co = require('co'),
-	M = require('../../models'),
-	config = require('../../config/config'),
-	thinky = require(__base+'/config/thinky.js'),
+	M = require(__base+'/api/models'),
+	config = require(__base+'/api/config/config'),
+	thinky = require(__base+'/api/config/thinky.js'),
 	r = thinky.r;
 
 module.exports = function(done) { 

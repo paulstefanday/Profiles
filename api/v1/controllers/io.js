@@ -1,7 +1,7 @@
 'use strict';
-var config = require('../../../config/config'),
-  	M = require('../../../models/'),
-    thinky = require(__base+'/config/thinky.js'),
+var config = require(__base+'/api/config/config'),
+  	M = require(__base+'/api/models/'),
+    thinky = require(__base+'/api/config/thinky.js'),
     r = thinky.r;
 
 
@@ -9,13 +9,13 @@ module.exports.activity = function (io) {
 
   io.on('connection', function(socket){
 
+    console.log('connected')
+
     socket.on('activity:changes:start', function(data){
 
-      console.log('get started', data)
+      let limit = data.limit || 100,
+          filter = data.filter || {};
 
-      let limit, filter;
-      limit = data.limit || 100; 
-      filter = data.filter || {};
       r.db('test').table('activities')
         .orderBy({index: r.desc('createdAt')})
         .filter(filter)
@@ -29,8 +29,7 @@ module.exports.activity = function (io) {
           
           console.log(err); 
         
-        }
-        else{
+        } else{
 
           if(cursor){
             cursor.each(function(err, record){

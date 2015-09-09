@@ -1,0 +1,14 @@
+#home.box
+
+	.logo
+		i.ion-ios-people
+		h1 Profiles
+
+	br
+
+
+	//- If not logged in
+	button.ladda-button(ng-if="!vm.isUser()" ng-click="vm.authenticate('facebook')" ladda-button="vm.laddaLoading" data-style="expand-right") Login via Facebook
+
+	//- If logged in
+	button.ladda-button(ng-if="vm.isUser()" ui-sref="report" ) Report

@@ -1,9 +1,4 @@
-var email = require('./email');
-
-
-// Use in controllers example:
-// var email = require('../../../email');
-// var testemail = yield email.test();
+var email = require(__base+'/api/email');
 
 module.exports = {
 

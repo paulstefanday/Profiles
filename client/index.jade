@@ -1,0 +1,35 @@
+doctype
+html(ng-app="app")
+  head(lang='en')
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width; initial-scale=1.0; maximum-scale=1.0;')
+    title Cycle Reporting App
+    link(rel='shortcut icon' href='/images/favicon.png' type='image/png')
+
+
+    meta(property='og:title' content="")
+    meta(property='og:site_name' content="")
+    meta(property='og:description' content="")
+    meta(property='fb:admin' content="")
+    meta(property='og:type' content="Website")
+    meta(property='og:image' content="")
+    meta(property='og:image:width' content="1200")
+    meta(property='og:image:height' content="630")
+
+    link(href='https://fonts.googleapis.com/css?family=Roboto:400,100,900,400italic' rel='stylesheet' type='text/css')
+    link(rel="stylesheet" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css")
+    link(rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/Ladda/0.9.4/ladda.min.css" )
+    link(rel="stylesheet" href="/public/index.css" )
+
+
+  body.gradient
+
+    nav
+
+    ui-view
+
+    script(src="//cdnjs.cloudflare.com/ajax/libs/spin.js/2.0.1/spin.js")
+    script(src="//cdnjs.cloudflare.com/ajax/libs/Ladda/0.9.4/ladda.min.js")
+    script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB16sGmIekuGIvYOfNoW9T44377IU2d2Es&amp;sensor=true")
+    script(src="/public/index.js")

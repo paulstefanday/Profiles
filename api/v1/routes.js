@@ -1,24 +1,16 @@
 // Controllers
 var authCtrl = require('./controllers/Auth.js');
-var profileCtrl = require('./controllers/Profile.js');
-var importCtrl = require('./controllers/Import.js');
-var user = require('../../config/permissions');
+var activityCtrl = require('./controllers/Activity.js');
+var user = require(__base+'/api/config/permissions');
 var router = require('koa-router');
 
 var api = new router();
 
-// Save profile
-api.post('/profile', profileCtrl.create);
-// api.put('/profile/:profile', profileCtrl.update);
-// api.get('/profile', user.is('logged in'), profileCtrl.find);
-
-// Get search query params
-// api.get('/search', profileCtrl.search);
-
-// import
-api.get('/import/nationbuilder', importCtrl.nationbuilder);
+// Save activity
+api.post('/activity', user.is('logged in'), activityCtrl.create);
 
 // Auth Routes
+api.post('/facebook', authCtrl.facebook);
 api.post('/signup', authCtrl.signup);
 api.post('/login', authCtrl.login);
 api.post('/reset', authCtrl.reset);

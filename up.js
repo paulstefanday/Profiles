@@ -1,11 +1,11 @@
 var app = require('./server'),
 	request = require('co-supertest').agent(app.listen()),
 	co = require('co'),
-	H = require('./config/helpers'),
-	M = require('./models'),
+	H = require(__base+'/api/config/helpers'),
+	M = require(__base+'/api/models'),
 	_ = require('lodash'),
-	config = require('./config/config'),
-	thinky = require(__base+'/config/thinky.js'),
+	config = require(__base+'/api/config/config'),
+	thinky = require(__base+'/api/config/thinky.js'),
 	r = thinky.r,
 	fake = require('./mock.js'),
 	jwt = require('jsonwebtoken'),
@@ -27,27 +27,16 @@ co(function *(){
 
 	console.log('Created admin')
 
-	// create users
-	// for (var i = 1; i < amount; i++) {
-	// 	var user = fake.user(),
-	// 		res = yield request.post(fake.data.v + '/signup').send(user).end();
-		
-	// 	user.token = res.body.token;
-	// 	fake.users.push(user);
-	// }
-
-	// console.log('Created ' + fake.users.length + ' users.')
-
-	// create profiles
+	// 
 	for (var i = 1; i < amount; i++) {
-		var profile = yield request.post(fake.data.v + '/profile').send(fake.profile()).end();
-		fake.profiles.push(profile.body);
+		var profile = yield request.post(fake.data.v + '/activity').send(fake.activity()).end();
+		fake.activities.push(profile.body);
 	}
 
 	console.log('Created ' + fake.profiles.length + ' profiles.')
 
 
-	console.log('Token: ' + fake.data.admin.token, 'Profiles: ' + fake.profiles.length);
+	console.log('Token: ' + fake.data.admin.token, 'Activity: ' + fake.activities.length);
 	process.exit()
 
 }).catch(function(err){

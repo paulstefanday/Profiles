@@ -1,10 +1,10 @@
-var app = require('../server');
+var app = require(__base+'/server');
 var request = require('co-supertest').agent(app.listen());
 var expect = require('chai').expect;
 var co = require('co');
-var M = require('../models'),
-	config = require('../config/config'),
-	thinky = require(__base+'/config/thinky.js'),
+var M = require(__base+'/api/models'),
+	config = require(__base+'/api/config/config'),
+	thinky = require(__base+'/api/config/thinky.js'),
 	r = thinky.r;
 
 describe('V1: Auth', function() {

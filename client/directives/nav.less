@@ -1,0 +1,107 @@
+@navWidth: 250px;
+
+/* Navigation Styles */
+#navigation,
+#menu,
+.menu-link {
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -ms-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+
+#navigation {
+    position: relative;
+    padding-left: 0;
+}
+#navigation.active #menu {
+    left: @navWidth;
+    width: @navWidth;
+}
+
+#navigation.active .menu-link {
+    left: @navWidth;
+}
+
+
+#menu {
+  margin-left: -@navWidth; /* "#menu" width */
+  width: @navWidth;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1000; /* so the menu or its navicon stays above all content */
+  background: @mainColor;
+  overflow-y: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
+  -webkit-overflow-scrolling: touch;
+
+
+-webkit-box-shadow: inset -16px 0px 34px -9px rgba(0,0,0,0.25);
+-moz-box-shadow: inset -16px 0px 34px -9px rgba(0,0,0,0.25);
+box-shadow: inset -16px 0px 34px -9px rgba(0,0,0,0.25);
+
+border-right: 1px solid rgba(255,255,255,0.4)
+
+}
+
+#menu a {
+  color: #fff;
+  border: none;
+  padding: 20px 20px;
+  float: left;
+  width: 100%;
+  text-decoration: none;
+  font-size: @textSize
+}
+
+#menu a:hover {
+  background:rgba(255,255,255,0.1);
+}
+
+#menu li {
+  list-style: none;
+}
+
+.menu-link {
+  cursor: pointer;
+  border: 0 solid #fff;
+  display: block;
+  font-size: 29px;
+  z-index: 10;
+  width: 48px;
+  height: 45px;
+  padding: 6px;
+  position: absolute;
+}
+
+@media (min-width: 300em) {
+
+    .header,
+    .content {
+        padding-left: 2em;
+        padding-right: 2em;
+    }
+
+    #navigation {
+        padding-left: @navWidth; /* left col width "#menu" */
+        left: 0;
+    }
+    #menu {
+        left: @navWidth;
+    }
+
+    .menu-link {
+        position: fixed;
+        left: @navWidth;
+        display: none;
+    }
+
+    #navigation.active .menu-link {
+        left: @navWidth;
+    }
+}

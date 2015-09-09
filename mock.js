@@ -6,10 +6,9 @@ var config = require('./config/config'),
 var data = {};
 	data.v = '/api/v1';
 	data.admin = { email: config.admin, password: '1234', first_name: 'rootadmin' };
-	data.emails = [chance.email(),chance.email(),chance.email(),chance.email(),chance.email(),chance.email(),chance.email(),chance.email(),chance.email(),chance.email(), chance.email(), chance.email(), chance.email(), chance.email(), chance.email(), chance.email(),chance.email(),chance.email(),chance.email(),chance.email(),chance.email(),chance.email(),chance.email(),chance.email(),chance.email(),chance.email()];
 
 module.exports = {
-	profiles: [],
+	activities: [],
 	users: []
 }
 
@@ -27,22 +26,11 @@ module.exports.user = function() {
 
 }
 
-module.exports.profile = function() {
+module.exports.activtiy = function() {
 
 	return {
-	    first_name: chance.first(),
-	    last_name: chance.last(),
-	    phone: chance.phone(),
-	    address: chance.address(),
-	    postcode: chance.pick([2073, 2016, 4000, 3020]),
-	    city: chance.city(),
-	    location: [chance.longitude(), chance.latitude()],
-	    locations: [ [chance.longitude(), chance.latitude()],  [chance.longitude(), chance.latitude()],  [chance.longitude(), chance.latitude()] ], //chance.unique([chance.latitude(), chance.longitude()], 5),
 	    ip: chance.ip(),
-	    dob: chance.birthday(),
-	    job_title: chance.pick(['Overlord', 'Head of cat cuddling', 'Senior Cat cuddler', 'Thai food tester', 'Fart donator', 'Senior VP of farts', 'Head of naps']),
-	    gender: chance.gender(),
-	    email: chance.pick(data.emails),
+	    data: chance.pick(['Overlord', 'Head of cat cuddling', 'Senior Cat cuddler', 'Thai food tester', 'Fart donator', 'Senior VP of farts', 'Head of naps']),
 	}
 
 }

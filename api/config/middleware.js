@@ -1,6 +1,5 @@
 var jwt = require('jsonwebtoken'),
-    config = require('./config'),
-    // jade = require('koa-jade'),
+    config = require(__base+'/api/config/config'),
     secret = config.secret;
 
 
@@ -22,28 +21,21 @@ module.exports.errors = function *(next){
 }
 
 // Auth
-module.exports.auth = function* (next) {
+module.exports.auth = function *(next) {
 
   var token = this.get('Authorization');
 
   if (token) {
     try {
-      this.user = jwt.verify(token, secret); 
+      this.user = jwt.verify(token, secret);
     } catch(err){
       console.log(err)
     }
   }
-  
+
   yield next;
 
 }
-
-// module.exports.render = function* (next) {
-//   return jade.middleware({
-//     viewPath: __base + '/frontend',
-//     debug: true
-//   })
-// }
 
 module.exports.permissions = require('./permissions').middleware();
 

@@ -1,4 +1,4 @@
-var config = require('../config/config'),
+var config = require(__base+'/api/config/config'),
     nodemailer = require("nodemailer"),
     Promise = require("bluebird"),
     smtpTransport = require('nodemailer-smtp-transport');

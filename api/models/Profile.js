@@ -1,5 +1,5 @@
-var 	config = require(__base+'/config/config.js'),
-        thinky = require(__base+'/config/thinky.js'),
+var 	config = require(__base+'/api/config/config.js'),
+        thinky = require(__base+'/api/config/thinky.js'),
 		type = thinky.type,
 		r = thinky.r,
 		validator = require('validator');
