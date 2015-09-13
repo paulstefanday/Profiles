@@ -1,0 +1,14 @@
+.container
+  h1 Dashboard
+
+  aside
+    h4 Organsations
+    select(ng-options="org.id as org.name for org in vm.organisations" ng-change="vm.getProfiles()" ng-model="vm.organisation") {{ organisation.name }}
+
+    hr
+
+    h4 Profiles
+    button(ng-repeat="profile in vm.profiles") {{ profile.email }}
+
+  article
+    pre {{ selected | json }}

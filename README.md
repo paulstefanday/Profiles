@@ -31,10 +31,12 @@ Allows you to do advanced demographic querying outputting unique id's which can 
 - manage services via api keys
 - get a frontend that lets you monitor activity
 - add in tests and docs
+- deploy app using elastic beanstalk
 - get a cluster of rethinkdb going using docker in AWS
 - get es6 features working using new node verion 4
 - add activity routes
 - add activity client
+
 
 ### Client
 1. login

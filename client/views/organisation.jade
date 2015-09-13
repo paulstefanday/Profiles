@@ -1,0 +1,26 @@
+.container
+  h1 Manage Organisations
+
+  aside
+    h4 Organsations
+    button.ladda-button(ng-click="vm.startNew()") Create Organisation
+    hr
+    button.ladda-button(ng-repeat="organisation in vm.organisations" ng-click="vm.selected = organisation") {{ organisation.name }}
+
+
+  article
+    .info(ng-if="!vm.edit")
+      p public: {{ vm.selected.public }}
+      p secret: {{ vm.selected.private }}
+      pre {{ vm.selected | json }}
+      button.ladda-button(ng-click="vm.edit = true") Edit
+
+    form(name="orgForm" ng-if="!vm.new && vm.edit" ng-submit="vm.update()")
+      input(type="text" ng-model="vm.selected.name")
+      button.ladda-button(ng-disabled="orgForm.$invalid") Update
+      button.ladda-button(ng-click="vm.edit = false") Cancel
+
+    form(name="newOrgForm" ng-if="vm.new && vm.edit" ng-submit="vm.create()")
+      input(type="text" ng-model="vm.selected.name")
+      button.ladda-button(ng-disabled="newOrgForm.$invalid") Create
+      button.ladda-button(ng-click="vm.edit = false") Cancel

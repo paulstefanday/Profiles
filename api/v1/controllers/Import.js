@@ -1,6 +1,6 @@
 var   formidable = require('koa-formidable'),
-      config = require('../../../config/config'),
-      M = require('../../../models/');
+      config = require(__base+'/config/config'),
+      M = require(__base+'/models/');
 
 /**
  * @api {get} /v1/import/nationbuilder Nationbuilder
@@ -16,7 +16,7 @@ var   formidable = require('koa-formidable'),
  *          id: 'asdasdasdasdasdsadad'
  *     }]
  *
- */ 
+ */
 
 module.exports.nationbuilder = function *() {
   var body = yield formidable.parse(this);

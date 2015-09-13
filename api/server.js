@@ -10,28 +10,33 @@ var app = module.exports = require('koa')(),
    	session = require('koa-session'),
     Grant = require('grant-koa'),
     serve = require('koa-static-folder'),
-   	bodyParser = require('koa-bodyparser');
+   	bodyParser = require('koa-bodyparser'), server, io;
 
-var server, io;
+// Relations
+M.User.hasAndBelongsToMany(M.Organisation, "organisations", "id", "id");
+M.Organisation.hasAndBelongsToMany(M.User, "users", "id", "id");
+
+M.Profile.hasAndBelongsToMany(M.Organisation, "organisations", "id", "id");
+M.Organisation.hasAndBelongsToMany(M.Profile, "profiles", "id", "id");
 
 // Middleware
 app.use(bodyParser());
-app.use(middleware.logs);
+// app.use(middleware.logs);
 app.use(serve('./public'))
 app.use(middleware.cors);
 app.use(middleware.errors);
 app.use(middleware.permissions);
 app.use(middleware.auth);
 
-// Client
-app.use(route.get('/*', function *() { this.body = yield render('./client/index.jade'); }));
-
 // HTTP routes
 app.use(mount('/api/v1', require('./v1/routes')));
 
+// Client
+app.use(route.get('/*', function *() { this.body = yield render('./client/index.jade'); }));
+
 // Sockets
-var server = require('http').createServer(app.callback());
-var io = require('socket.io')(server);
+server = require('http').createServer(app.callback());
+io = require('socket.io')(server);
 require('./v1/controllers/io').activity(io);
 
 // Listen

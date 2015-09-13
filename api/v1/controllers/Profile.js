@@ -1,6 +1,6 @@
 var   formidable = require('koa-formidable'),
-      config = require('../../../config/config'),
-      M = require('../../../models/'),
+      config = require(__base+'/config/config'),
+      M = require(__base+'/models/'),
       thinky = require(__base+'/config/thinky.js'),
       r = thinky.r;
 
@@ -18,7 +18,7 @@ var   formidable = require('koa-formidable'),
  *          id: 'asdasdasdasdasdsadad'
  *     }]
  *
- */ 
+ */
 
 module.exports.find = function *() {
   this.body = yield M.Profile.run();
@@ -36,7 +36,7 @@ module.exports.find = function *() {
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
  *
- */ 
+ */
 
 module.exports.search = function *() {
   // this.body = yield M.Profile.run();
@@ -55,7 +55,7 @@ module.exports.search = function *() {
  *     HTTP/1.1 200 OK
  *     { id: 'asdadasdsdadasdad' }
  *
- */ 
+ */
 
 module.exports.create = function *() {
   var body = yield formidable.parse(this), record, result, activity;
@@ -73,7 +73,7 @@ module.exports.create = function *() {
 
   // Get users IP
 
-  
+
   if(record.length > 0) { // Updates record
 
     result = yield M.Profile.get(record[0].id).update(body.fields);

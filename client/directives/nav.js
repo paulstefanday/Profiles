@@ -13,13 +13,17 @@ class Nav {
       this.hide = () => this.showNav = false
 
       this.login = () => {
-        $auth.authenticate('facebook');
-        this.hide();
+        $auth.authenticate('facebook').then(res => {
+          this.hide();
+          $state.go('admin.dashboard');
+        });
       }
 
       this.logout = () => {
-        $auth.logout();
-        this.hide();
+        $auth.logout().then(res => {
+          this.hide();
+          $state.go('home');
+        });
       }
 
       this.loggedIn = () => $auth.isAuthenticated()

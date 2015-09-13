@@ -5,13 +5,19 @@
     i.ion-ios-close-empty(ng-show="vm.showNav")
 
   ul#menu
-    li
+
+    //- Logged out
+    li(ng-hide="vm.loggedIn()")
       a(href='#/' ng-click="vm.hide()") Home
-    //- li
-    //-   a(href='#/map' ng-click="vm.hide()") Map
-    //- li
-    //-   a(href='#/report' ng-click="vm.hide()" ng-show="vm.loggedIn()") Report
-    li
-      a(href='' ng-hide="vm.loggedIn()" ng-click="vm.login()") Login
-    li
-      a(href='' ng-show="vm.loggedIn()" ng-click="vm.logout()") Logout
+    li(ng-hide="vm.loggedIn()")
+      a(href='' ng-click="vm.login()") Login
+
+    //- Logged in
+    li(ng-show="vm.loggedIn()")
+      a(href='#/dashboard' ng-click="vm.hide()") Profiles
+    li(ng-show="vm.loggedIn()")
+      a(href='#/organisation' ng-click="vm.hide()") Organisation
+    li(ng-show="vm.loggedIn()")
+      a(href='' ng-click="vm.logout()") Logout
+
+
