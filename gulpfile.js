@@ -8,15 +8,16 @@ var concat = require('gulp-concat');
 var less = require('gulp-less');
 var minifyCss = require('gulp-minify-css');
 var lessBaseImport = require('gulp-less-base-import');
+var uglify = require('gulp-uglify');
 var dist = './public';
 
 gulp.task('less', function() {
   return gulp.src([
-      './client/index.less',
+      './client/styles/index.less',
       './client/directives/**/*.less',
       './client/views/**/*.less',
     ])
-    .pipe(lessBaseImport('./client/variables'))
+    .pipe(lessBaseImport('./client/styles/_variables'))
     .pipe(less())
     .pipe(minifyCss())
     .pipe(concat('index.css'))
@@ -32,11 +33,10 @@ gulp.task('build', function() {
     .pipe(ngAnnotate())
     .pipe(rename('index.js'))
     .pipe(gulp.dest(dist))
+    .pipe(uglify())
+    .pipe(rename('index.min.js'))
+    .pipe(gulp.dest(dist))
 });
-
-// gulp.task('server', function (cb) {
-// 	exec('node_modules/.bin/nodemon --harmony --watch server.js', function execError(err, stdout, stderr) { console.log(stdout); console.log(stderr); cb(err); });
-// });
 
 gulp.task('default', ['build', 'less', 'watch']);
 

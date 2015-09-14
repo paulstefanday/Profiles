@@ -9,5 +9,7 @@
 
 
   //- If not logged in
-  button.ladda-button(ng-click="vm.authenticate('facebook')" ladda-button="vm.laddaLoading" data-style="expand-right")
+  button(ng-if="!vm.isUser()" ng-click="vm.authenticate('facebook')" ladda-button="vm.laddaLoading" data-style="expand-right")
     | Get started via Facebook
+
+  a.button(ng-if="vm.isUser()" href="/#/dashboard") View Dashboard

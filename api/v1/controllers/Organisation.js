@@ -61,6 +61,20 @@ module.exports.find = function *() {
   this.status = 200;
 }
 
+module.exports.update = function *() {
+  var result = yield M.Organisation.get(this.params.organisation).update(this.request.body);
+
+  this.body = result;
+  this.status = 200
+}
+
+module.exports.delete = function *() {
+  var result = yield M.Organisation.get(this.params.organisation).delete();
+  console.log(result)
+  this.body = {id: this.params.organisation};
+  this.status = 200
+}
+
 // api/v1/organisation/:organisation/profiles
 
 module.exports.profiles = function *() {

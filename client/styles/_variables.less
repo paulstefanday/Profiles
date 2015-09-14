@@ -1,0 +1,51 @@
+@mainColor: #2C3E50;
+@textSize: 17px;
+@bold: 600;
+@mobileWidth: 767px;
+@tabletWidthMax: 959px;
+@tabletWidthMin: 768px;
+@marginBottom: 1em;
+@round: 0.5em;
+
+.font(@size: 100%, @weight: normal, @lineHeight: 150%) {
+    font-size: @size;
+    font-weight: @weight;
+    line-height: @lineHeight;
+}
+
+.inline-block() {
+    display: inline-block;
+    zoom: 1;
+    *display: inline; // For IE 7 support
+}
+
+.opacity(@factor){
+    opacity: @factor;
+    @iefactor: @factor*100;
+    filter: alpha(opacity=@iefactor);
+}
+
+.button-style(@customColor, @customTextColor){
+    background: @customColor;
+    color: @customTextColor;
+     &:hover {
+        background: darken(@customColor, 3%);
+        text-decoration: none;
+    }
+
+    &:active {
+        background: darken(@customColor, 6%);
+        transform: translateY(3px);
+    }
+
+    &.disabled {
+        background: lighten(@customColor, 2.5%);
+        color: darken(@customColor, 15%);
+        cursor: default;
+    }
+}
+
+.size(@height, @width) {
+    width: @width;
+    height: @height;
+}

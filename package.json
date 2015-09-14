@@ -16,7 +16,7 @@
   "license": "MIT",
   "dependencies": {
     "angular": "^1.4.0",
-    "angular-animate": "^1.4.0",
+    "angular-animate": "^1.4.5",
     "angular-datepicker": "^1.0.5",
     "angular-filter": "^0.5.4",
     "angular-socket-io": "^0.7.0",
@@ -98,6 +98,7 @@
     "gulp-mocha-co": "^0.4.1-co.3",
     "gulp-ng-annotate": "^1.1.0",
     "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.4.1",
     "jadeify": "^4.4.0",
     "koa-livereload": "^0.1.23",
     "lessify": "^1.0.1",

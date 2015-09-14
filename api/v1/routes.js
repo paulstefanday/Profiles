@@ -13,6 +13,8 @@ api.post('/profile', profileCtrl.create);
 // Organsaiton routes
 api.get('/organisation', orgCtrl.find);
 api.post('/organisation', orgCtrl.create);
+api.put('/organisation/:organisation', orgCtrl.update);
+api.delete('/organisation/:organisation', orgCtrl.delete);
 api.get('/organisation/:organisation/profiles', orgCtrl.profiles);
 api.put('/organisation/:organisation/join', orgCtrl.join);
 

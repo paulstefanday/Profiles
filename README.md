@@ -25,10 +25,11 @@ Allows you to do advanced demographic querying outputting unique id's which can 
 4. Mandrill
 
 ### TODO
+- admin checks for organisation routes
+- manage services via api keys
 - get save user details route working under a few circumstances
 - copy basic open source starter and make sure all the proper checks are setup
 - get another node app saving data serverside via npm package
-- manage services via api keys
 - get a frontend that lets you monitor activity
 - add in tests and docs
 - deploy app using elastic beanstalk

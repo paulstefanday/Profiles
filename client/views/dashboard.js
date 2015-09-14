@@ -5,7 +5,6 @@ export default /*@ngInject*/ function($auth, $http) {
   }
 
   this.getProfiles = () => {
-    console.log(`/api/v1/organisation/${this.organisation}/profiles`)
     $http.get(`/api/v1/organisation/${this.organisation}/profiles`).then(res => console.log(res))
   }
 

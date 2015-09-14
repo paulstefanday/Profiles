@@ -1,26 +1,38 @@
 .container
-  h1 Manage Organisations
+
+  header
+    h1(ng-if="!vm.edit") Manage Organisations
+    h1(ng-if="!vm.new && vm.edit") Edit: {{ vm.selected.name }}
+    h1(ng-if="vm.new && vm.edit") Create Organisation
 
   aside
-    h4 Organsations
-    button.ladda-button(ng-click="vm.startNew()") Create Organisation
-    hr
-    button.ladda-button(ng-repeat="organisation in vm.organisations" ng-click="vm.selected = organisation") {{ organisation.name }}
+
+    button.full(ng-click="vm.startNew()") Create Organisation
+
+    .organisations(ng-if="vm.organisations.length > 0")
+      hr
+      h5 Organsations
+      button.full.light(ng-repeat="organisation in vm.organisations" ng-click="vm.select(organisation)") {{ organisation.name }}
 
 
   article
-    .info(ng-if="!vm.edit")
+
+    //- Preview
+    .frame(ng-if="!vm.edit && vm.selected")
       p public: {{ vm.selected.public }}
       p secret: {{ vm.selected.private }}
       pre {{ vm.selected | json }}
-      button.ladda-button(ng-click="vm.edit = true") Edit
+      button(ng-click="vm.edit = true") Edit
+      button.light(ng-click="vm.delete()") Delete
 
-    form(name="orgForm" ng-if="!vm.new && vm.edit" ng-submit="vm.update()")
-      input(type="text" ng-model="vm.selected.name")
-      button.ladda-button(ng-disabled="orgForm.$invalid") Update
-      button.ladda-button(ng-click="vm.edit = false") Cancel
+    //- Edit form
+    form.frame(name="orgForm" ng-if="!vm.new && vm.edit" ng-submit="vm.update()")
+      include organisation.form.jade
+      button(ng-disabled="orgForm.$invalid") Update
+      button.light(ng-click="vm.edit = false; vm.selected = false;") Cancel
 
-    form(name="newOrgForm" ng-if="vm.new && vm.edit" ng-submit="vm.create()")
-      input(type="text" ng-model="vm.selected.name")
-      button.ladda-button(ng-disabled="newOrgForm.$invalid") Create
-      button.ladda-button(ng-click="vm.edit = false") Cancel
+    //- Create form
+    form.frame(name="newOrgForm" ng-if="vm.new && vm.edit" ng-submit="vm.create()")
+      include organisation.form.jade
+      button(ng-disabled="newOrgForm.$invalid") Create
+      button.light(ng-click="vm.edit = false; vm.new = false; vm.selected = false;") Cancel

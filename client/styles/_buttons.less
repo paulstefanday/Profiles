@@ -1,0 +1,49 @@
+@import '../../node_modules/ladda/dist/ladda.min.css';
+
+button, .button {
+  padding: 14px 18px;
+  font-size: 18px;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 2px;
+  border: 1px solid transparent;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  background-color: @mainColor !important;
+  color: #fff ;
+  display: inline-block;
+  box-shadow: 0 2px 1px 0 darken(@mainColor, 10%);
+  border-bottom: 4px solid lighten(@mainColor, 10%) !important;
+  font-size: @textSize;
+  margin-right: 3px;
+  text-decoration: none;
+}
+
+button.light, .button.light {
+  background-color: lighten(@mainColor, 10%) !important;
+    box-shadow: 0 2px 1px 0 darken(@mainColor, 20%);
+  border-bottom: 4px solid lighten(@mainColor, 20%) !important;
+}
+
+button:hover, .ladda-button:hover {
+  margin-top: -2px;
+  background: darken(@mainColor, 5%);
+  box-shadow: 0 5px 6px 0 darken(@mainColor, 10%);
+}
+
+button:active, .ladda-button:active {
+  margin-top: 0px;
+  box-shadow: 0 2px 1px 0 darken(@mainColor, 10%);
+}
+
+.sweet-alert {
+  button:hover {
+    margin-top: 26px;
+  }
+}
+
+.full {
+  width: 100%;
+  text-align:left;
+  margin: 0 0 @marginBottom 0;
+}

@@ -1,0 +1,43 @@
+@import '../../node_modules/sweetalert/dist/sweetalert.css';
+
+html {
+  min-height: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  color: #777;
+  background: #9CC3FF;
+  font-family: 'Roboto', sans-serif;
+  .inline-block();
+  width: 100%;
+  box-sizing: border-box;
+  margin:0;
+  padding: 8px;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@smallPercent: 45%;
+@bigPercent: 30%;
+
+.gradient {
+  background: #9CC3FF;
+  background: lighten(@mainColor, @smallPercent);
+  background: -moz-linear-gradient(-45deg, lighten(@mainColor, @smallPercent) 0%, lighten(@mainColor, @bigPercent) 100%);
+  background: -webkit-gradient(left top, right bottom, color-stop(0%, lighten(@mainColor, @smallPercent)), color-stop(100%, lighten(@mainColor, @bigPercent)));
+  background: -webkit-linear-gradient(-45deg, lighten(@mainColor, @smallPercent) 0%, lighten(@mainColor, @bigPercent) 100%);
+  background: -o-linear-gradient(-45deg, lighten(@mainColor, @smallPercent) 0%, lighten(@mainColor, @bigPercent) 100%);
+  background: -ms-linear-gradient(-45deg, lighten(@mainColor, @smallPercent) 0%, lighten(@mainColor, @bigPercent) 100%);
+  background: linear-gradient(135deg, lighten(@mainColor, @smallPercent) 0%, lighten(@mainColor, @bigPercent) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f85032', endColorstr='#e73827', GradientType=1 );
+ }
+
+@import './_layout.less';
+@import './_type.less';
+@import './_buttons.less';
+@import './_forms.less';
+@import './_animations.less';
