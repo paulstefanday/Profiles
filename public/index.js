@@ -495,7 +495,6 @@ exports['default'] = /*@ngInject*/["$auth", "$http", "$timeout", function ($auth
     return $http['delete']('/api/v1/organisation/' + _this.selected.id).then(function (res) {
       _this.selected = false;
       _this.edit = false;
-      console.log(res);
       _this.organisations = _this.organisations.filter(function (org) {
         return org.id !== res.data.id;
       });

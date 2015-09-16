@@ -20,7 +20,6 @@ export default /*@ngInject*/ function($auth, $http, $timeout) {
   this.delete = () => $http.delete(`/api/v1/organisation/${this.selected.id}`).then(res => {
     this.selected = false
     this.edit = false
-    console.log(res);
     this.organisations = this.organisations.filter(org => org.id !== res.data.id)
   })
 

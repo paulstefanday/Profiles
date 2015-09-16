@@ -14,3 +14,11 @@ module.exports = thinky.createModel("organisations", {
     createdAt: type.date().default(r.now())
 });
 
+User.pre('init', function(next) {
+    // if (this.age < 18) {
+    //     next(new Error("A user must be at least 18 years old."));
+    // }
+    // else {
+    //     next();
+    // }
+});
