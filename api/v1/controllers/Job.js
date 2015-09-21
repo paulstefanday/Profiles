@@ -3,6 +3,7 @@ var   config = require(__base+'/config/config'),
 	  thinky = require(__base+'/config/thinky.js'),
 	  r = thinky.r;
 
+var formidable = require('koa-formidable')
 
 /**
  * @api {get} /v1/activity Create
@@ -22,18 +23,36 @@ var   config = require(__base+'/config/config'),
 
  	var body = this.request.body, record, result, relation;
 
- 	record = new M.Organisation(body);
+  body.user_id = this.user.id;
+
+ 	record = new M.Job(body);
  	result = yield record.save();
-  relation = yield r.table('organisations_users').insert({organisations_id: record.id, users_id: this.user.id })
 
  	this.body = result;
  	this.status = 200;
 
  }
 
- module.exports.join = function *() {
 
- }
+module.exports.image = function *() {
+  var self = this,
+      thunkify = require('thunkify-wrap'),
+      form = yield formidable.parse(this),
+      s3 = require('s3'),
+      client = s3.createClient({ 
+        s3Options: { 
+          accessKeyId: 'AKIAITP7ZTGPG6RSZ3UA', 
+          secretAccessKey: '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'
+        }
+      }),
+      params = { localFile: form.files.file.path, s3Params: { Bucket: "purposecareer", Key: form.files.file.name } },
+      uploader = client.uploadFile(params),
+      upload = thunkify.event(uploader, 'end');
+
+  yield upload();
+
+  self.body = { url: 'https://s3-ap-southeast-2.amazonaws.com/purposecareer/' + form.files.file.name }
+}
 
 /**
  * @api {get} /v1/profile Get
@@ -54,38 +73,24 @@ var   config = require(__base+'/config/config'),
 module.exports.find = function *() {
 
   var result = yield M.User.get(this.user.id).getJoin({
-    organisations: true
+    jobs: true
   }).run();
 
-  this.body = result.organisations || [];
+  this.body = result.jobs || [];
   this.status = 200;
 }
 
 module.exports.update = function *() {
-  var result = yield M.Organisation.get(this.params.organisation).update(this.request.body);
+  var result = yield M.Job.get(this.params.job).update(this.request.body);
 
   this.body = result;
   this.status = 200
 }
 
 module.exports.delete = function *() {
-  var result = yield M.Organisation.get(this.params.organisation).delete();
+  var result = yield M.Job.get(this.params.job).delete();
   console.log(result)
-  this.body = {id: this.params.organisation};
+  this.body = {id: this.params.job};
   this.status = 200
 }
 
-// api/v1/organisation/:organisation/profiles
-
-module.exports.profiles = function *() {
-
-  var result = yield M.User.get(this.user.id).getJoin({
-    organisations: {
-      _apply: sequence => sequence.find(this.params.organisation),
-      profiles: true
-    }
-  }).run();
-
-  this.body = result.organisations[0].profiles || [];
-  this.status = 200;
-}

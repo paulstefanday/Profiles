@@ -1,22 +1,18 @@
 // Controllers
 var authCtrl = require('./controllers/Auth.js');
-var profileCtrl = require('./controllers/Profile.js');
-var orgCtrl = require('./controllers/Organisation.js');
+var jobCtrl = require('./controllers/Job.js');
 var user = require(__base+'/config/permissions');
 var router = require('koa-router');
 
 var api = new router();
 
-// Profile routes
-api.post('/profile', profileCtrl.create);
-
 // Organsaiton routes
-api.get('/organisation', orgCtrl.find);
-api.post('/organisation', orgCtrl.create);
-api.put('/organisation/:organisation', orgCtrl.update);
-api.delete('/organisation/:organisation', orgCtrl.delete);
-api.get('/organisation/:organisation/profiles', orgCtrl.profiles);
-api.put('/organisation/:organisation/join', orgCtrl.join);
+api.get('/job', jobCtrl.find);
+api.post('/job', jobCtrl.create);
+api.put('/job/:job', jobCtrl.update);
+api.delete('/job/:job', jobCtrl.delete);
+
+api.post('/image', jobCtrl.image);
 
 // Auth Routes
 api.post('/facebook', authCtrl.facebook);

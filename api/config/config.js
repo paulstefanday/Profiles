@@ -5,7 +5,7 @@ module.exports = {
 
 	// Database
 	"db": {
-		"db": process.env.DB || 'profilestest',
+		"db": process.env.DB || 'purposetest',
 		"port": process.env.DBPORT || 28015,
 		"host": process.env.DBHOST ||  '52.64.143.79', //'localhost',
 	},

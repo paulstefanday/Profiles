@@ -13,15 +13,10 @@ var app = module.exports = require('koa')(),
    	bodyParser = require('koa-bodyparser'), server, io;
 
 // Relations
-M.User.hasAndBelongsToMany(M.Organisation, "organisations", "id", "id");
-M.Organisation.hasAndBelongsToMany(M.User, "users", "id", "id");
-
-M.Profile.hasAndBelongsToMany(M.Organisation, "organisations", "id", "id");
-M.Organisation.hasAndBelongsToMany(M.Profile, "profiles", "id", "id");
+M.User.hasMany(M.Job, "jobs", "id", "user_id");
 
 // Middleware
 app.use(bodyParser());
-// app.use(middleware.logs);
 app.use(serve('./public'))
 app.use(middleware.cors);
 app.use(middleware.errors);
@@ -34,13 +29,8 @@ app.use(mount('/api/v1', require('./v1/routes')));
 // Client
 app.use(route.get('/*', function *() { this.body = yield render('./client/index.jade'); }));
 
-// Sockets
-server = require('http').createServer(app.callback());
-io = require('socket.io')(server);
-require('./v1/controllers/io').activity(io);
-
 // Listen
-server.listen(config.port);
+app.listen(config.port);
 
 
 

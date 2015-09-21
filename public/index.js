@@ -396,13 +396,13 @@ exports['default'] = /*@ngInject*/["$auth", "$http", function ($auth, $http) {
   var _this = this;
 
   this.getOrgs = function () {
-    $http.get('/api/v1/organisation/').then(function (res) {
+    $http.get('/api/v1/job/').then(function (res) {
       return _this.organisations = res.data;
     });
   };
 
   this.getProfiles = function () {
-    $http.get('/api/v1/organisation/' + _this.organisation + '/profiles').then(function (res) {
+    $http.get('/api/v1/job/' + _this.organisation + '/profiles').then(function (res) {
       return console.log(res);
     });
   };
@@ -452,7 +452,7 @@ var buf = [];
 var jade_mixins = {};
 var jade_interp;
 
-buf.push("<div class=\"container\"><header><h1 ng-if=\"!vm.edit\">Manage Organisations</h1><h1 ng-if=\"!vm.new &amp;&amp; vm.edit\">Edit: {{ vm.selected.name }}</h1><h1 ng-if=\"vm.new &amp;&amp; vm.edit\">Create Organisation</h1></header><aside><button ng-click=\"vm.startNew()\" class=\"full\">Create Organisation</button><div ng-if=\"vm.organisations.length &gt; 0\" class=\"organisations\"><hr/><h5>Organsations</h5><button ng-repeat=\"organisation in vm.organisations\" ng-click=\"vm.select(organisation)\" class=\"full light\">{{ organisation.name }}</button></div></aside><article><div ng-if=\"!vm.edit &amp;&amp; vm.selected\" class=\"frame\"><p>public: {{ vm.selected.public }}</p><p>secret: {{ vm.selected.private }}</p><pre>{{ vm.selected | json }}</pre><button ng-click=\"vm.edit = true\">Edit</button><button ng-click=\"vm.delete()\" class=\"light\">Delete</button></div><form name=\"orgForm\" ng-if=\"!vm.new &amp;&amp; vm.edit\" ng-submit=\"vm.update()\" class=\"frame\"><label>Organisation Name</label><input type=\"text\" ng-model=\"vm.selected.name\"/><button ng-disabled=\"orgForm.$invalid\">Update</button><button ng-click=\"vm.edit = false; vm.selected = false;\" class=\"light\">Cancel</button></form><form name=\"newOrgForm\" ng-if=\"vm.new &amp;&amp; vm.edit\" ng-submit=\"vm.create()\" class=\"frame\"><label>Organisation Name</label><input type=\"text\" ng-model=\"vm.selected.name\"/><button ng-disabled=\"newOrgForm.$invalid\">Create</button><button ng-click=\"vm.edit = false; vm.new = false; vm.selected = false;\" class=\"light\">Cancel</button></form></article></div>");;return buf.join("");
+buf.push("<div class=\"container\"><header><h1 ng-if=\"!vm.edit\">Manage Organisations</h1><h1 ng-if=\"!vm.new &amp;&amp; vm.edit\">Edit: {{ vm.selected.name }}</h1><h1 ng-if=\"vm.new &amp;&amp; vm.edit\">Create Organisation</h1></header><aside><button ng-click=\"vm.startNew()\" class=\"full\">Create Organisation</button><div ng-if=\"vm.organisations.length &gt; 0\" class=\"organisations\"><hr/><h5>Organsations</h5><button ng-repeat=\"organisation in vm.organisations\" ng-click=\"vm.select(organisation)\" class=\"full light\">{{ organisation.name }}</button></div></aside><article><div class=\"frame\"> <form action=\"/api/v1/image\" method=\"post\" enctype=\"multipart/form-data\"><input type=\"file\" name=\"file\" multiple=\"\"/><input type=\"submit\" value=\"Upload\"/></form></div><div ng-if=\"!vm.edit &amp;&amp; vm.selected\" class=\"frame\"><p>public: {{ vm.selected.public }}</p><p>secret: {{ vm.selected.private }}</p><pre>{{ vm.selected | json }}</pre><button ng-click=\"vm.edit = true\">Edit</button><button ng-click=\"vm.delete()\" class=\"light\">Delete</button></div><form name=\"orgForm\" ng-if=\"!vm.new &amp;&amp; vm.edit\" ng-submit=\"vm.update()\" class=\"frame\"><label>Organisation Name</label><input type=\"text\" ng-model=\"vm.selected.name\"/><button ng-disabled=\"orgForm.$invalid\">Update</button><button ng-click=\"vm.edit = false; vm.selected = false;\" class=\"light\">Cancel</button></form><form name=\"newOrgForm\" ng-if=\"vm.new &amp;&amp; vm.edit\" ng-submit=\"vm.create()\" class=\"frame\"><label>Organisation Name</label><input type=\"text\" ng-model=\"vm.selected.name\"/><button ng-disabled=\"newOrgForm.$invalid\">Create</button><button ng-click=\"vm.edit = false; vm.new = false; vm.selected = false;\" class=\"light\">Cancel</button></form></article></div>");;return buf.join("");
 };
 },{"jade/runtime":23}],13:[function(require,module,exports){
 'use strict';
@@ -465,7 +465,7 @@ exports['default'] = /*@ngInject*/["$auth", "$http", "$timeout", function ($auth
   var _this = this;
 
   this.getOrgs = function () {
-    return $http.get('/api/v1/organisation').then(function (res) {
+    return $http.get('/api/v1/job').then(function (res) {
       return _this.organisations = res.data;
     });
   };
@@ -477,7 +477,7 @@ exports['default'] = /*@ngInject*/["$auth", "$http", "$timeout", function ($auth
   };
 
   this.create = function () {
-    return $http.post('/api/v1/organisation', _this.selected).then(function (res) {
+    return $http.post('/api/v1/job', _this.selected).then(function (res) {
       _this.organisations.push(res.data);
       _this.selected = res.data;
       _this['new'] = false;
@@ -486,13 +486,13 @@ exports['default'] = /*@ngInject*/["$auth", "$http", "$timeout", function ($auth
   };
 
   this.update = function () {
-    return $http.put('/api/v1/organisation/' + _this.selected.id, _this.selected).then(function (res) {
+    return $http.put('/api/v1/job/' + _this.selected.id, _this.selected).then(function (res) {
       return _this.edit = false;
     });
   };
 
   this['delete'] = function () {
-    return $http['delete']('/api/v1/organisation/' + _this.selected.id).then(function (res) {
+    return $http['delete']('/api/v1/job/' + _this.selected.id).then(function (res) {
       _this.selected = false;
       _this.edit = false;
       _this.organisations = _this.organisations.filter(function (org) {
