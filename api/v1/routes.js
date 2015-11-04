@@ -20,8 +20,8 @@ api.put('/organisation/:organisation/join', orgCtrl.join);
 
 // Auth Routes
 api.post('/facebook', authCtrl.facebook);
-api.post('/signup', authCtrl.signup);
-api.post('/login', authCtrl.login);
-api.post('/reset', authCtrl.reset);
+// api.post('/signup', authCtrl.signup);
+// api.post('/login', authCtrl.login);
+// api.post('/reset', authCtrl.reset);
 
 module.exports = api.middleware();

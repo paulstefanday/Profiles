@@ -2,7 +2,7 @@
 
   header
     h1(ng-if="!vm.edit") Manage Organisations
-    h1(ng-if="!vm.new && vm.edit") Edit: {{ vm.selected.name }}
+    h1(ng-if="!vm.new && vm.edit") Editing {{ vm.selected.name }}
     h1(ng-if="vm.new && vm.edit") Create Organisation
 
   aside
@@ -19,9 +19,14 @@
 
     //- Preview
     .frame(ng-if="!vm.edit && vm.selected")
-      p public: {{ vm.selected.public }}
-      p secret: {{ vm.selected.private }}
-      pre {{ vm.selected | json }}
+      h5 Keys
+      label Public Key
+      p {{ vm.selected.public }}
+      label Secret Key
+      p {{ vm.selected.private }}
+
+    .frame(ng-if="!vm.edit && vm.selected")
+      h5 Actions
       button(ng-click="vm.edit = true") Edit
       button.light(ng-click="vm.delete()") Delete
 

@@ -26,7 +26,7 @@ Allows you to do advanced demographic querying outputting unique id's which can 
 
 ### TODO
 - admin checks for organisation routes
-- manage services via api keys https://github.com/aliem/node-apikey http://thejackalofjavascript.com/architecting-a-restful-node-js-app/ https://www.npmjs.com/package/node-uuid https://github.com/substack/node-hat
+- manage profile route via api keys https://github.com/thomseddon/koa-oauth-server
 - get save user details route working under a few circumstances
 - copy basic open source starter and make sure all the proper checks are setup
 - get another node app saving data serverside via npm package
